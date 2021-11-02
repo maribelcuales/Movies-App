@@ -21,7 +21,18 @@ app.use(express.json());
 // Cors prevents errors when we try to access the server from a different server location
 app.use(cors());
 
-app.get('/', (req, res) => res.send("Home Route"));
+// GET: Fetch all movies from the database 
+app.get('/', (req, res) => {
+  db.select('*')
+    .from('movies')
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 
 const port = process.env.PORT || 5000;
 
