@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const knex = require('knex');
-const pg = require('pg');
+// const pg = require('pg');
 const server = express();
 
 server.use(express.urlencoded({ extended: false }));
@@ -29,6 +29,21 @@ server.get('/', (req, res) => {
       console.log(err);
     });
 });
+
+// GET: Fetch movie by movieId from the database
+server.get('/:movieId', (req, res) => {
+  const movieId = req.params.movieId;
+  db.select('*')
+    .from('movies')
+    .where('movie_id', '=', movieId)
+    .then((data) => {
+      console.log(data);
+      res.json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}); 
 
 const PORT = process.env.PORT || 8000;
 
