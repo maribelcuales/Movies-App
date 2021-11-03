@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const knex = require('knex');
+const { application } = require('express');
 // const pg = require('pg');
 const server = express();
 
@@ -69,6 +70,19 @@ server.post('/add-movie', (req, res) => {
     });
 }); 
 
+// PUT: Update movie by movieId from the database 
+server.put('/update-movie', (req, res) => {
+  db('movies')
+    .where('movie_id', '=', 1)
+    .update({ movie_name: 'Goldeneye' })
+    .then(() => {
+      console.log('Movie updated');
+      return res.json({ msg: 'Movie updated' });
+    })
+    .catch((err) => {
+      console.log(err); 
+    }); 
+});
 
 const PORT = process.env.PORT || 8000;
 
