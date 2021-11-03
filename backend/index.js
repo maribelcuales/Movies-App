@@ -1,28 +1,24 @@
+require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const knex = require('knex');
-require('dotenv').config();
+const pg = require('pg');
+const server = express();
+
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json()); 
+
+// Cors prevents errors when we try to access the server from a different server location
+server.use(cors());
 
 const db = knex({
   client: 'pg',
-  connection: {
-    host: process.env.DATABASE_HOST,
-    user: process.env.DATABASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
-    database: process.env.DATABASE, 
-  }
+  connection: process.env.DATABASE_URL,
 });
 
-const app = express(); 
-
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json()); 
-
-// Cors prevents errors when we try to access the server from a different server location
-app.use(cors());
 
 // GET: Fetch all movies from the database 
-app.get('/', (req, res) => {
+server.get('/', (req, res) => {
   db.select('*')
     .from('movies')
     .then((data) => {
@@ -34,6 +30,6 @@ app.get('/', (req, res) => {
     });
 });
 
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 
-app.listen(port, () => console.log(`Server running on port ${port}, http://localhost:${port}`));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}, http://localhost:${PORT}`));
