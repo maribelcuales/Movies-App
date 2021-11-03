@@ -45,6 +45,31 @@ server.get('/:movieId', (req, res) => {
     });
 }); 
 
+// POST: Create movies and add them to the database 
+server.post('/add-movie', (req, res) => {
+  const { movieName, imgUrl, releaseYear, summary, director, genre, rating, movieRuntime, metaScore } = req.body;
+  db('movies')
+    .insert({
+      movie_name: movieName,
+      img_url: imgUrl,
+      release_year: releaseYear,
+      summary: summary,
+      director: director,
+      genre: genre,
+      rating: rating,
+      movie_runtime: movieRuntime,
+      meta_score: metaScore,
+    })
+    .then(() => {
+      console.log('Movie Added');
+      return res.json({ msg: 'Movie Added' });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}); 
+
+
 const PORT = process.env.PORT || 8000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}, http://localhost:${PORT}`));
