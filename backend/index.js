@@ -84,6 +84,24 @@ server.put('/update-movie', (req, res) => {
     }); 
 });
 
+// DELETE: Delete movie by movieId from the database 
+server.delete('/delete-movie', (req, res) => {
+  const movieId = req.body;
+  const movieIdToDelete = Number(movieId.movieId);
+  console.log(movieIdToDelete);
+  db('movies')
+    .where('movie_id', '=', movieIdToDelete)
+    .del()
+    .then(() => {
+      console.log('Movie deleted');
+      return res.json({ msg: 'Movie deleted' });
+    })
+    .catch((err) => {
+      console.log(err); 
+    });
+});
+
+
 const PORT = process.env.PORT || 8000;
 
 server.listen(PORT, () => console.log(`Server running on port ${PORT}, http://localhost:${PORT}`));
