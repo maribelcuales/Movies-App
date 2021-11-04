@@ -45,8 +45,8 @@ server.get('/', (req, res) => {
 
 
 // GET: Fetch movie by movieId from the database
+/*
 server.get('/:movieId', (req, res) => {
-  // const movieId = req.params.movieId;
   const { movie_id } = req.params;
   db.select('*')
     .from('movies')
@@ -60,6 +60,17 @@ server.get('/:movieId', (req, res) => {
       res.status(500).json({ message: "Could not find movie with given id.", error: err.message });
       console.log(err);
     });
+});
+*/
+
+server.get(':/movieId', (req, res) => {
+  const movieId = req.params.movieId; 
+  db.query('SELECT * FROM movies WHERE movie_id = movieId', [movieId], (error, results) => {
+    if (error) {
+      throw error
+    }
+    res.status(200).json(results.rows)
+  });
 });
 
 
