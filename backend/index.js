@@ -3,12 +3,14 @@ const express = require('express');
 const cors = require('cors');
 const knex = require('knex');
 const bodyParser = require('body-parser');
-// const pg = require('pg');
+const pg = require('pg');
 const server = express();
 
-//server.use(bodyParser.json());
-server.use(express.urlencoded({ extended: false }));
+// parse requests of content-type - application/json
 server.use(express.json()); 
+
+// parse requests of content-type - application/x-www-form-urlencoded
+server.use(express.urlencoded({ extended: true }));
 
 // Cors prevents errors when we try to access the server from a different server location
 server.use(cors());
@@ -20,7 +22,6 @@ const db = knex({
 
 
 // GET: Fetch all movies from the database 
-/*
 server.get('/', (req, res) => {
   db.select('*')
     .from('movies')
@@ -32,95 +33,46 @@ server.get('/', (req, res) => {
       console.log(err);
     });
 });
-*/
-
-server.get('/', (req, res) => {
-  db.query('SELECT * FROM movies', (error, results) => {
-    if (error) {
-      throw error
-    }
-    res.status(200).json(res.rows)
-  })
-})
-
 
 // GET: Fetch movie by movieId from the database
-/*
 server.get('/:movieId', (req, res) => {
-  const { movie_id } = req.params;
+  const movieId = req.params.movieId;
   db.select('*')
     .from('movies')
-    //.where('movie_id', '=', movieId)
-    .where({ movie_id })
+    .where('movie_id', '=', movieId)
     .then((movie) => {
       console.log(movie);
-      res.status(200).json({ movie });
+      res.status(200).json(movie);
     })
     .catch((err) => {
       res.status(500).json({ message: "Could not find movie with given id.", error: err.message });
       console.log(err);
     });
 });
-*/
-
-server.get(':/movieId', (req, res) => {
-  const movieId = req.params.movieId; 
-  db.query('SELECT * FROM movies WHERE movie_id = movieId', [movieId], (error, results) => {
-    if (error) {
-      throw error
-    }
-    res.status(200).json(results.rows)
-  });
-});
 
 
 // POST: Create movies and add them to the database 
-server.post('/add-movie', (req, res) => {
-  // const addMovie  = req.body; 
-  const { movieName, imgUrl, releaseYear, summary, director, genre, rating, movieRuntime, metaScore } = req.body;
-  /*
+server.post('/movie', (req, res) => {
   db('movies')
-    .insert(addMovie)
-    .then(movie => {
-      console.log('Movie Added');
-      res.status(201).json(movie)
-    .catch((err) => {
-      console.log('POST error', err);
-      res.status(500).json({ message: "Could not add movie." });
-    });
-  */
-  
-  db('movies')
+    .returning('movie_id')
     .insert({
-      movie_name: movieName,
-      img_url: imgUrl,
-      release_year: releaseYear,
-      summary: summary,
-      director: director,
-      genre: genre,
-      rating: rating,
-      movie_runtime: movieRuntime,
-      meta_score: metaScore,
+      movie_name: req.body.movie_name,
+      img_url: req.body.img_url,
+      release_year: req.body.release_year,
+      summary: req.body.summary,
+      director: req.body.director,
+      genre: req.body.genre,
+      rating: req.body.rating,
+      movie_runtime: req.body.movie_runtime,
+      meta_score: req.body.meta_score,
     })
-    .into('movies')
-    .then((movie) => {
-      console.log('Movie Added');
-      // return res.json({ movie })
-      res.status(201).json({ movie })
+    .then(data => {
+      console.log(data);
+      res.json(data); 
     })
-    .catch((err) => {
-      console.log('POST error', err);
-      res.status(500).json({ message: "Could not add movie." });
+    .catch(err => {
+      res.status(500).send({ message: err.message || "There was an error adding the movie." })
     });
-    /*
-    .then(() => {
-      console.log('Movie Added');
-      return res.json({ msg: 'Movie Added' });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-    */ 
 });
 
 // PUT: Update movie by movieId from the database 
