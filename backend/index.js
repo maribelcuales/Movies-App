@@ -76,12 +76,13 @@ server.post('/movie', (req, res) => {
 });
 
 // PUT: Update movie by movieId from the database 
-server.put('/update-movie', (req, res) => {
-  db
-    .select('*')
-    .from('movies')
-    .where('movie_id', '=', 1)
-    .update({ movie_name: 'Goldeneye' })
+server.put('/:movieId', (req, res) => {
+  const movieId = req.params.movieId;
+  const changes = req.body;
+  db('movies')
+    .where('movie_id', '=', movieId)
+    .update(changes)
+    .returning('movie_id')
     .then(() => {
       console.log('Movie updated');
       return res.json({ msg: 'Movie updated' });
@@ -91,39 +92,12 @@ server.put('/update-movie', (req, res) => {
     }); 
 });
 
-server.put('/:movieId', (req, res) => {
-  const changes = req.body; 
-  const { movie_id } = req.params; 
-  // const movieId = req.params.movieId;
-
-  db.select('*')
-    .from('movies')
-    //.where('movie_id', '=', movieId)
-    .where({ movie_id })
-    .update(changes)
-    .then((updateMovie) => {
-      if (updateMovie) {
-        res.status(200).json({ updateMovie }); 
-      } else {
-        res
-          .status(404)
-          .json({ error: "Please provide the right movie information." }); 
-      }
-    })
-    .catch((err) => {
-      res
-        .status(500)
-        .json({ message: "There was an error updating.", error: err.message })
-    });
-});
 
 // DELETE: Delete movie by movieId from the database 
-server.delete('/delete-movie', (req, res) => {
-  const movieId = req.body;
-  const movieIdToDelete = Number(movieId.movieId);
-  console.log(movieIdToDelete);
+server.delete('/:movieId', (req, res) => {
+  const movieId = req.params.movieId;
   db('movies')
-    .where('movie_id', '=', movieIdToDelete)
+    .where('movie_id', '=', movieId)
     .del()
     .then(() => {
       console.log('Movie deleted');
