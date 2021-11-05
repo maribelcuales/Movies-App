@@ -54,7 +54,7 @@ server.get('/:movieId', (req, res) => {
 // POST: Create movies and add them to the database 
 server.post('/movie', (req, res) => {
   db('movies')
-    .returning('movie_id')
+    // .returning('movie_id')
     .insert({
       movie_name: req.body.movie_name,
       img_url: req.body.img_url,
@@ -67,8 +67,9 @@ server.post('/movie', (req, res) => {
       meta_score: req.body.meta_score,
     })
     .then(data => {
-      console.log(data);
-      res.json(data); 
+      console.log('Movie Added!');
+      // res.json(data);
+      return res.redirect('http://localhost:3000'); 
     })
     .catch(err => {
       res.status(500).send({ message: err.message || "There was an error adding the movie." })
