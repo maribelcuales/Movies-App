@@ -13,13 +13,14 @@ body {
   font-size: 1.6rem;
   font-family: "Arsenal", sans-serif;
   /* letter-spacing: 0.2rem; */
-  background: rgb(242, 242, 242);
-  color: #0e0e0e;
-  background-color: papayawhip;
+  /*background: rgb(242, 242, 242);*/
+  color: #013a63;
+  background: #F0E6E6;
 }
 
 header {
-  background: #0e0e0e;
+  /*background: #0e0e0e;*/
+  background: #014f86;
   padding: 1rem;
 }
 
@@ -52,17 +53,28 @@ form {
 form input {
   height: 3rem;
   padding: 1.5rem;
+  border-radius: 10px;
+  border: 1.5px solid #f4f4f4;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);  
 }
 
 form textarea {
   padding: 1.5rem;
+  border-radius: 10px;
+  border: 1.5px solid #f4f4f4;
+  box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);  
 }
 
 form button {
   padding: 1rem;
   border: none;
-  background: #fcee0b;
+  border-radius: 10px;
+  background: #f9c74f;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-weight: bold;
+  color: #013a63;
+  font-size: 15px;
   cursor: pointer;
   transition: background 0.3s;
   text-transform: uppercase;
@@ -79,7 +91,7 @@ form div {
 }
 
 .movie-container {
-  background: #fcee0b;
+  background: #fff1e6;
   padding: 4rem;
   margin-top: 2rem;
   border-radius: 2rem 7rem;
