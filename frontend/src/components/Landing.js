@@ -47,7 +47,7 @@ const Button = styled.button`
   text-transform: uppercase;
 
   top: 48%;
-  left: 30%;
+  left: 27.5%;
   text-align: center;
   position: absolute;
   width: 250px;
@@ -59,7 +59,7 @@ const Landing = () => {
       <Background src={Popcorn} alkt="Popcorn Background"/> 
         <div>
           <Title>Meta Movie Reviews</Title>
-          <Link to="/add-movie" exact>  
+          <Link to="/movies" exact>  
             <Button>Curate List</Button> 
           </Link>
         </div>
