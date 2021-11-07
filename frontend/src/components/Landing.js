@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import styled from "styled-components";
 
 import "./styles.css";
@@ -34,9 +35,10 @@ const Button = styled.button`
   padding: 1rem;
   border: none;
   border-radius: 15px;
-  background: white;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  background-color: #ffe8d6;
+  box-shadow: inset 0px 0px 8px rgba(0, 0, 0, 1);
+  padding-top: 20px;
+  padding-bottom: 20px;
   font-weight: bold;
   color: #013a63;
   font-size: 20px;
@@ -44,12 +46,11 @@ const Button = styled.button`
   transition: background 0.3s;
   text-transform: uppercase;
 
-  top: 52%;
+  top: 48%;
   left: 30%;
   text-align: center;
   position: absolute;
-  width: 200px;
-  background-color: white;
+  width: 250px;
 `;
 
 const Landing = () => {
@@ -58,7 +59,9 @@ const Landing = () => {
       <Background src={Popcorn} alkt="Popcorn Background"/> 
         <div>
           <Title>Meta Movie Reviews</Title>
-          <Button>Add Review</Button> 
+          <Link to="/add-movie" exact>  
+            <Button>Curate List</Button> 
+          </Link>
         </div>
     </Container>
   );
