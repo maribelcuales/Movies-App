@@ -26,7 +26,7 @@ const Movies = () => {
   return (
     <Fragment>
       <header>
-        <h1>Movies</h1>
+        <h1>Curated Movie Reviews List</h1>
       </header>
       <main>
         {loading === true ? (

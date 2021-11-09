@@ -24,6 +24,9 @@ header {
   /*background: #0e0e0e;*/
   background: #014f86;
   padding: 1rem;
+  padding-top: 50px; 
+  padding-bottom: 50px; 
+
 }
 
 header h1 {
