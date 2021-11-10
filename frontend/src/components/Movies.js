@@ -1,5 +1,17 @@
 import React, { Fragment, useState, useEffect } from "react";
+import styled from "styled-components";
+
 import "../App.css";
+import Cinema from "./cinemaFrontage.jpg";
+
+const Background = styled.img`    
+  max-width: 100%; 
+  max-width: 100%
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+`;
 
 const Movies = () => {
   useEffect(() => {
@@ -35,6 +47,12 @@ const Movies = () => {
           </div>
         ) : (
           <section>
+            <div style={{
+              maxWidth: "100%",
+              height: "auto%"
+            }}> 
+              <Background src={Cinema} alt="Cinema Frontage"/> 
+            </div>
             {apiData.map((movie) => {
               let metaColor = "low";
 
