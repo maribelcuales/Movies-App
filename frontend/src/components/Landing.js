@@ -56,7 +56,7 @@ const Button = styled.button`
 const Landing = () => {
   return (
     <Container>
-      <Background src={Popcorn} alkt="Popcorn Background"/> 
+      <Background src={Popcorn} alt="Popcorn Background"/> 
         <div>
           <Title>Meta Movie Reviews</Title>
           <Link to="/movies" exact>  
