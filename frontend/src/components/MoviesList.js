@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import "../App.css";
@@ -26,6 +26,21 @@ const SectionDiv = styled.div`
 `;
 
 const MoviesList = () => {
+  const [apiData, setApiData] = useState([]);
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => {
+    fetch("http://127.0.0.1:5000/")
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .then((data) => {
+        console.log(data);
+        setLoading(false);
+        setApiData(data);
+      });
+  }, []);
   return (
     <Container>
       <SectionDiv>
