@@ -9,11 +9,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 `;
 
 const Background = styled.img`    
-  height: auto;
+  max-height: 100%;
   width: 100%
   background-attachment: fixed;
   background-position: center;
@@ -27,8 +28,10 @@ const Title = styled.h1`
   top: 40%;
   left: 35%;
   transform: translate(-50%, -50%);
-  color: white;
+  color: #3C3A4C;
+  text-shadow: 4px 4px white;   
   font-size: 70px;
+  font: roboto;
 `;
 
 const Button = styled.button`
