@@ -10,11 +10,10 @@ const Container = styled.div`
   flex-direction: column;
   box-sizing: border-box;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
 `;
 
 const Background = styled.img`    
-  max-height: 100%;
   width: 100%
   background-attachment: fixed;
   background-position: center;

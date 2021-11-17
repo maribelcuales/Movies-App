@@ -7,18 +7,21 @@ import Cinema from "./cinemaFrontage.jpg";
 const Container = styled.div`
   display: flex;
   justify-content: space-evenly;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
 `;
 
 const Background = styled.img`
+  width: 100%;
   max-width: 100%;
-  height: 100%;
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
 `;
 
+/*
 const BackgroundImage = styled.div`
   background-image: url("cinemaFrontage.jpg");
   max-width: 100%;
@@ -28,7 +31,7 @@ const BackgroundImage = styled.div`
   background-size: cover;
   background-attachment: fixed;
 `;
-
+*/
 
 const SectionDiv = styled.div`
   display: flex;
@@ -57,22 +60,10 @@ const MoviesList = () => {
     <Container>
       <SectionDiv>
         <div
-          style={{
-            maxWidth: "100%",
-            height: "auto",
-          }}
+
         >
           <h1>Curated Meta Movie Reviews</h1>
-          <BackgroundImage>
-            {/*<Background src={Cinema} alt="Cinema Frontage" /> */}
-            <div style={{
-              height:"1000px", 
-              backgroundColor:"red",
-              fontAize: "36px"
-            }}>
-              Scroll Up and Down this page to see the parallax scrolling effect.This div is just here to enable scrolling.Tip: Try to remove the background-attachment property to remove the scrolling effect.
-            </div>
-          </BackgroundImage>
+            <Background src={Cinema} alt="Cinema Frontage" />
         </div>
       </SectionDiv>
     </Container>
