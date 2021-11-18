@@ -1,15 +1,22 @@
-import './metaStyles.css';
+import "./metaStyles.css";
 
 const MetaMovies = () => {
   return (
-    <section className="banner" id="banner">
+    <div className="banner" id="banner">
       <div className="content">
-        <h2>Metacritic Movie Reviews</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <a href="#">Movie List</a>
+        <h2>Meta Movie Reviews</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.
+        </p>
+        <a href="#" className="btn">
+          Movie List
+        </a>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default MetaMovies; 
+export default MetaMovies;
