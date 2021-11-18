@@ -1,4 +1,4 @@
-import './styles.css';
+import './metaStyles.css';
 
 const MetaMovies = () => {
   return (
