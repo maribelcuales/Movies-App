@@ -31,7 +31,7 @@ const MetaHeader = () => {
           <a href="#banner">Home</a>
         </li>
         <li>
-          <a href="#movies">Movie Reviews</a>
+          <a href="#reviews">Movie Reviews</a>
         </li>
         <li>
           <a href="#add-review">Add Review</a>
