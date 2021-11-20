@@ -5,7 +5,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-  color: white;
+  color: #e76f51;
 }
 
 p {
@@ -49,6 +49,23 @@ p {
   text-transform: uppercase;
   text-decoration: none;
   letter-spacing: 2px;
+  transition: 0.5s;
+}
+
+.btn:hover {
+  letter-spacing: 6px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px; 
+  z-index: 10000; 
+  display: flex; 
+  justify-content: space-between;
+  align-items: center;
   transition: 0.5s;
 }
 
