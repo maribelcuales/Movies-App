@@ -1,5 +1,6 @@
 import "./MetaHeader.js";
 import MetaHeader from "./MetaHeader.js";
+import MetaReviews from "./MetaReviews.js";
 import "./metaStyles.css";
 
 const MetaMovies = () => {
@@ -20,6 +21,7 @@ const MetaMovies = () => {
           </a>
         </div>
       </div>
+      <MetaReviews />
     </div>
   );
 };
