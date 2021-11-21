@@ -23,7 +23,7 @@ const MetaReviews = () => {
         </div>
         <div className="col50">
           <div className="imgBx">
-            <img src={Cinema} />
+            <img src={Cinema} alt="Cinema Frontage"/>
           </div>
         </div>
       </div>

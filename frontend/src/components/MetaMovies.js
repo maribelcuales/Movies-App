@@ -1,3 +1,4 @@
+import MetaCard from "./MetaCard.js";
 import "./MetaHeader.js";
 import MetaHeader from "./MetaHeader.js";
 import MetaReviews from "./MetaReviews.js";
@@ -22,6 +23,7 @@ const MetaMovies = () => {
         </div>
       </div>
       <MetaReviews />
+      <MetaCard />
     </div>
   );
 };
